@@ -1,1058 +1,160 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manish Yadav | Full-Stack Developer & Web Solutions Architect</title>
-  
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              dark: '#030712',
-              card: 'rgba(15, 23, 42, 0.75)',
-              primary: '#6366f1',
-              cyan: '#00f2fe',
-              purple: '#7928ca',
-              emerald: '#10b981'
-            }
-          },
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
-            'spin-slow': 'spin 14s linear infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-              '50%': { transform: 'translateY(-12px) rotate(1deg)' },
-            },
-            pulseGlow: {
-              '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
-              '50%': { opacity: 0.8, transform: 'scale(1.05)' },
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Three.js Library for 3D Interactive Cyber Background -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
+  <title>Manish Yadav | Web Developer & Founder of Manish Web Technologies</title>
   <style>
-    body {
-      background-color: #030712;
-      color: #f1f5f9;
-      overflow-x: hidden;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    #canvas-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .glass-panel {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .glass-card {
-      background: rgba(17, 24, 39, 0.65);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .glass-card:hover {
-      border-color: rgba(99, 102, 241, 0.5);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.35);
-    }
-
-    .neon-gradient-text {
-      background: linear-gradient(135deg, #00f2fe 0%, #6366f1 50%, #7928ca 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .tech-badge {
-      background: rgba(99, 102, 241, 0.12);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      transition: all 0.3s ease;
-    }
-    .tech-badge:hover {
-      background: rgba(6, 182, 212, 0.2);
-      border-color: rgba(6, 182, 212, 0.6);
-      transform: scale(1.05);
-    }
-
-    .modal-backdrop {
-      background: rgba(3, 7, 18, 0.88);
-      backdrop-filter: blur(18px);
-    }
-
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #030712; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #0f172a; color: #f8fafc; line-height: 1.6; }
+    header { padding: 4rem 2rem; text-align: center; background: linear-gradient(135deg, #1e293b, #0f172a); border-bottom: 1px solid #334155; }
+    h1 { font-size: 2.8rem; color: #38bdf8; margin-bottom: 0.5rem; }
+    p.subtitle { font-size: 1.2rem; color: #94a3b8; max-width: 600px; margin: 0 auto 1.5rem; }
+    .contact-btn { display: inline-block; background: #0284c7; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+    .contact-btn:hover { background: #0369a1; }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
+    .section-title { text-align: center; font-size: 2rem; margin-bottom: 2.5rem; color: #f1f5f9; }
+    
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .project-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; }
+    .project-card:hover { transform: translateY(-5px); border-color: #38bdf8; }
+    .project-card h3 { color: #f8fafc; margin-bottom: 0.5rem; }
+    .project-card p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .card-links { display: flex; gap: 1rem; }
+    .btn-live { background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 600; flex: 1; text-align: center; }
+    .btn-github { background: #334155; color: white; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 600; flex: 1; text-align: center; }
+    
+    footer { text-align: center; padding: 2rem; background: #0f172a; border-top: 1px solid #334155; color: #64748b; margin-top: 3rem; }
   </style>
 </head>
-<body class="relative min-h-screen selection:bg-indigo-500 selection:text-white">
+<body>
 
-  <!-- 3D Interactive Canvas Background -->
-  <div id="canvas-container"></div>
+  <header>
+    <h1>Manish Yadav</h1>
+    <p class="subtitle">Frontend & Backend Web Developer | Founder of Manish Web Technologies</p>
+    <a href="mailto:yadavmanishk364@gmail.com" class="contact-btn">📧 Hire Me / Work Together</a>
+  </header>
 
-  <!-- Ambient Glow Effects -->
-  <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[160px] pointer-events-none z-0 animate-pulse-glow"></div>
-  <div class="fixed bottom-10 right-10 w-[500px] h-[500px] bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
+  <div class="container">
+    <h2 class="section-title">Featured Web Projects</h2>
+    
+    <div class="projects-grid">
 
-  <!-- Header Navigation -->
-  <nav class="sticky top-0 z-50 px-4 sm:px-8 py-4">
-    <div class="max-w-7xl mx-auto glass-panel rounded-2xl px-6 py-3.5 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-400 via-indigo-600 to-purple-600 p-[2px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
-          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-extrabold text-cyan-400 font-mono">
-            MY
-          </div>
-        </div>
+      <!-- 1. The Rooftop Restaurant -->
+      <div class="project-card">
         <div>
-          <span class="font-extrabold text-lg tracking-tight text-white block leading-none">Manish Yadav</span>
-          <span class="text-[10px] font-mono text-cyan-400 tracking-wider uppercase">Bettiah, Bihar • Full-Stack Developer</span>
+          <h3>The Rooftop Restaurant</h3>
+          <p>Official web ordering and restaurant management platform for modern food service.</p>
         </div>
-      </a>
-
-      <!-- Desktop Links -->
-      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
-        <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
-        <a href="#projects" class="hover:text-cyan-400 transition-colors">9 Live Projects</a>
-        <a href="#why-me" class="hover:text-cyan-400 transition-colors">Why Hire Me</a>
-        <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
-      </div>
-
-      <!-- Quick Action CTAs -->
-      <div class="flex items-center gap-3">
-        <a href="https://wa.me/919155437755?text=Hi%20Manish,%20I%20reviewed%20your%20portfolio.%20I%20want%20to%20discuss%20a%20project/job%20opportunity!" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-lg shadow-emerald-600/30 transition-all">
-          <i class="fa-brands fa-whatsapp text-sm"></i> Hire on WhatsApp
-        </a>
-        <a href="tel:9155437755" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-1.5">
-          <i class="fa-solid fa-phone text-xs"></i> <span>9155437755</span>
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Container -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28 pt-6 pb-20">
-
-    <!-- HERO SECTION -->
-    <section id="about" class="pt-6 sm:pt-12 pb-8 flex flex-col lg:flex-row items-center justify-between gap-12">
-      <div class="lg:w-7/12 space-y-6 text-center lg:text-left">
-        
-        <!-- Live Status Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel text-xs font-semibold text-cyan-300 border-cyan-500/30">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>Open for Freelance Projects & Job Hiring</span>
-          <span class="text-slate-500">|</span>
-          <span class="text-slate-300"><i class="fa-solid fa-location-dot text-indigo-400 mr-1"></i>Bettiah, Bihar</span>
-        </div>
-
-        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
-          Hi, I'm Manish Yadav<br>
-          <span id="typing-text" class="neon-gradient-text"></span>
-        </h1>
-
-        <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-          Versatile Web Developer from Bettiah, Bihar. I specialize in crafting commercial web applications, real-time Firebase cloud portals, automated bulk WhatsApp alert tools, e-commerce storefronts, and cab-hailing transport clones like <strong class="text-cyan-300">RideNow</strong>.
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-          <a href="#projects" class="px-7 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 shadow-xl shadow-indigo-600/30 hover:scale-105 transition-all flex items-center gap-2">
-            <span>Explore 9 Live Websites</span>
-            <i class="fa-solid fa-arrow-right text-xs"></i>
-          </a>
-          <a href="https://wa.me/919155437755?text=Hi%20Manish,%20I%20want%20to%20hire%20you!" target="_blank" class="px-7 py-3.5 rounded-xl font-bold text-sm text-slate-200 glass-card hover:bg-slate-800/80 hover:text-white border-slate-700 hover:scale-105 transition-all flex items-center gap-2">
-            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
-            <span>Direct WhatsApp Chat</span>
-          </a>
-        </div>
-
-        <!-- Quick Metrics -->
-        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-md mx-auto lg:mx-0">
-          <div>
-            <span class="text-2xl font-extrabold text-cyan-400 block">9+</span>
-            <span class="text-xs text-slate-400 font-medium">Deployed Websites</span>
-          </div>
-          <div>
-            <span class="text-2xl font-extrabold text-indigo-400 block">Firebase</span>
-            <span class="text-xs text-slate-400 font-medium">Cloud Database</span>
-          </div>
-          <div>
-            <span class="text-2xl font-extrabold text-emerald-400 block">WhatsApp</span>
-            <span class="text-xs text-slate-400 font-medium">Bulk APIs</span>
-          </div>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/therooftop-restaurant" target="_blank" class="btn-github">GitHub</a>
         </div>
       </div>
 
-      <!-- Hero Visual Card -->
-      <div class="lg:w-5/12 w-full max-w-md">
-        <div class="relative glass-panel rounded-3xl p-6 border-indigo-500/20 shadow-2xl animate-float">
-          <div class="absolute -top-3 -right-3 px-3.5 py-1 bg-gradient-to-r from-cyan-500 to-indigo-600 rounded-full text-[10px] font-mono font-bold text-white uppercase tracking-wider">
-            Web Developer & Tech Lead
-          </div>
-          <div class="w-full h-80 bg-gradient-to-b from-indigo-950/40 to-slate-900/90 rounded-2xl border border-slate-800 flex flex-col items-center justify-center p-6 text-center space-y-4">
-            <div class="w-20 h-20 rounded-2xl bg-indigo-600/20 border border-indigo-400/40 flex items-center justify-center text-4xl text-cyan-400 shadow-inner">
-              <i class="fa-solid fa-code"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-white">Manish Yadav</h3>
-              <p class="text-xs text-cyan-400 font-mono mt-1">Bettiah, Bihar • 9155437755</p>
-            </div>
-            <div class="w-full bg-slate-950/90 rounded-xl p-3 border border-slate-800 text-left text-xs font-mono text-slate-300 space-y-1">
-              <p><span class="text-purple-400">const</span> <span class="text-indigo-300">developer</span> = {</p>
-              <p class="pl-4"><span class="text-cyan-400">name</span>: <span class="text-emerald-300">'Manish Yadav'</span>,</p>
-              <p class="pl-4"><span class="text-cyan-400">role</span>: <span class="text-emerald-300">'Full-Stack Web Architect'</span>,</p>
-              <p class="pl-4"><span class="text-cyan-400">keyProjects</span>: [<span class="text-amber-300">'RideNow'</span>, <span class="text-amber-300">'FEA Portal'</span>],</p>
-              <p class="pl-4"><span class="text-cyan-400">hosting</span>: <span class="text-emerald-300">'Netlify Drop & Cloud'</span></p>
-              <p>};</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPREHENSIVE SKILLS SECTION (JOB & CLIENT READY) -->
-    <section id="skills" class="space-y-8">
-      <div class="text-center space-y-2">
-        <h2 class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase">Market-Ready Tech Stack</h2>
-        <p class="text-3xl font-extrabold text-white">Skills That Get Companies & Clients To Hire Me</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- 1. Front-End -->
-        <div class="glass-card rounded-3xl p-6 space-y-4">
-          <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-2xl font-bold border border-orange-500/20">
-            <i class="fa-brands fa-html5"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Front-End Engineering</h3>
-          <ul class="text-xs text-slate-300 space-y-2">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> HTML5, CSS3, Flexbox & Grid</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> JavaScript ES6+ (Async/Await, DOM)</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> React.js Component Architecture</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Tailwind CSS & Glassmorphism</li>
-          </ul>
-        </div>
-
-        <!-- 2. Back-End & Cloud -->
-        <div class="glass-card rounded-3xl p-6 space-y-4">
-          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl font-bold border border-amber-500/20">
-            <i class="fa-solid fa-fire"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Firebase & Cloud Backends</h3>
-          <ul class="text-xs text-slate-300 space-y-2">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Firebase Auth (Email & Role Access)</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Firestore Realtime Database</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> REST APIs & Data Fetching</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Node.js Basics & Environment Config</li>
-          </ul>
-        </div>
-
-        <!-- 3. Web Hosting & Deployment -->
-        <div class="glass-card rounded-3xl p-6 space-y-4">
-          <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl font-bold border border-cyan-500/20">
-            <i class="fa-solid fa-cloud-arrow-up"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Hosting & Deployment</h3>
-          <ul class="text-xs text-slate-300 space-y-2">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Netlify Drop & Netlify Live Sites</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Vercel & Production Builds</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Custom Domain Linking</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Responsive Mobile Optimization</li>
-          </ul>
-        </div>
-
-        <!-- 4. Specialized Client Solutions -->
-        <div class="glass-card rounded-3xl p-6 space-y-4">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl font-bold border border-emerald-500/20">
-            <i class="fa-brands fa-whatsapp"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white">Specialized Solutions</h3>
-          <ul class="text-xs text-slate-300 space-y-2">
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> 1-Click WhatsApp Bulk Notification</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Multi-Role Admin & Teacher Portals</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Ride-Hailing Cab Interface Clones</li>
-            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Restaurant Digital Menus & Storefronts</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ALL 9 PROJECTS SHOWCASE WITH FILTERS -->
-    <section id="projects" class="space-y-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <!-- 2. ShopKart -->
+      <div class="project-card">
         <div>
-          <h2 class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase">My Portfolio</h2>
-          <p class="text-3xl font-extrabold text-white">9 Live Projects & Deployed Websites</p>
+          <h3>ShopKart</h3>
+          <p>Feature-rich e-commerce shopping web platform clone with clean UI/UX.</p>
         </div>
-        
-        <!-- Category Filter Tabs -->
-        <div class="flex flex-wrap gap-2 glass-panel p-1.5 rounded-xl text-xs font-medium border-slate-800">
-          <button onclick="filterProjects('all')" class="filter-btn active px-3.5 py-2 rounded-lg bg-indigo-600 text-white transition-all">All Projects (9)</button>
-          <button onclick="filterProjects('commercial')" class="filter-btn px-3.5 py-2 rounded-lg text-slate-300 hover:text-white transition-all">Commercial Solutions</button>
-          <button onclick="filterProjects('apps')" class="filter-btn px-3.5 py-2 rounded-lg text-slate-300 hover:text-white transition-all">Web Apps & Platforms</button>
-          <button onclick="filterProjects('personal')" class="filter-btn px-3.5 py-2 rounded-lg text-slate-300 hover:text-white transition-all">Personal & Interactive</button>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/shopkart" target="_blank" class="btn-github">GitHub</a>
         </div>
       </div>
 
-      <!-- Projects Grid -->
-      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Project 1: RideNow -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="commercial apps">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-cyan-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">Cab Transport Clone</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">RideNow</span>
-                <span class="text-xs text-slate-400">Ride-Hailing & Cab Platform Interface</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">RideNow Cab Platform</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                Ola, Uber, and Rapido styled ride-hailing transport platform clone. Features live vehicle selection, pickup/drop location estimation, fare calculation, and interactive driver dispatch UI.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-cyan-300">Ride-Hailing UI</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">JavaScript</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Responsive UI</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://ridenowonroad.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs text-center shadow-lg shadow-cyan-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('ridenow')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
+      <!-- 3. NextFilm -->
+      <div class="project-card">
+        <div>
+          <h3>NextFilm</h3>
+          <p>Dynamic movie database web interface featuring real-time posters and exact film titles.</p>
         </div>
-
-        <!-- Project 2: FEA Attendance Tracking System -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="commercial apps">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-indigo-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-bold">Cloud SaaS Portal</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">FEA Tracking</span>
-                <span class="text-xs text-slate-400">Attendance & WhatsApp Automation</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">FEA Attendance Tracking System</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                Production-ready cloud portal with Master Admin vs Teacher role access, Firebase Auth & Firestore DB, dual-phone student data (Student + Parent), and 1-click bulk WhatsApp absentees messaging.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-indigo-300">Firebase Auth</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Firestore Cloud</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-emerald-300">WhatsApp API</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://fea-attendance-portal.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs text-center shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('fea')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 3: The Rooftop Restaurant -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="commercial">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-amber-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">Restaurant Commercial</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">Rooftop Restaurant</span>
-                <span class="text-xs text-slate-400">Client Web App in Bettiah, Bihar</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">The Rooftop Restaurant</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                Commercial web portal built for local restaurant client in Bettiah. Features dynamic food catalog, pricing, table reservation interface, and mobile ordering triggers.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Client Web App</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Digital Menu UI</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Netlify Live</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://therooftoprestaurant.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs text-center shadow-lg shadow-amber-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('rooftop')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 4: ShopKart Website -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="commercial apps">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-teal-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-teal-500/20 text-teal-300 border border-teal-500/30 font-bold">E-Commerce Storefront</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">ShopKart</span>
-                <span class="text-xs text-slate-400">Digital Storefront & Cart System</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">ShopKart Platform</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                E-commerce digital storefront clone modeled after Flipkart & Amazon with dynamic product listing, category filters, and cart management logic.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">E-Commerce Store</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Cart System</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Netlify Live</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://shopkartwebsite.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs text-center shadow-lg shadow-teal-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('shopkart')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 5: Quick Bite Website -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="commercial">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-orange-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-orange-500/20 text-orange-300 border border-orange-500/30 font-bold">Fast Food Commercial</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">Quick Bite</span>
-                <span class="text-xs text-slate-400">Fast Food & Dining Web Portal</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">Quick Bite Web Portal</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                Responsive web design engineered for fast food outlets and quick dining spots with quick-order categories and menu showcases.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Food Ordering UX</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Commercial UI</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Netlify Live</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://quickbitewebsite.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs text-center shadow-lg shadow-orange-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('quickbite')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 6: Next Film Online -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="apps">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-purple-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30 font-bold">Media & Streaming</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">Next Film Online</span>
-                <span class="text-xs text-slate-400">Movie Database & Streaming UI</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">Next Film Online</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                Real-time movie database & streaming portal interface integrating movie metadata and poster matching without generic placeholders.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Streaming UI</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Movie API</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Netlify Live</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://nextfilmonline.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs text-center shadow-lg shadow-purple-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('nextfilm')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 7: Dil Se Birthday -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="personal">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-pink-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-pink-500/20 text-pink-300 border border-pink-500/30 font-bold">Personal Greeting App</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">Dil Se Birthday</span>
-                <span class="text-xs text-slate-400">Interactive Birthday Greeting Portal</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">Dil Se Birthday Wishes</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                Special interactive birthday greeting website where users can express heartfelt messages, dynamic visual animations, and customizable greetings.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Interactive Canvas</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Animations</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Netlify Live</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://dilsebirthday.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs text-center shadow-lg shadow-pink-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('birthday')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 8: CrushCue -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="personal">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-rose-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold">Interactive App</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">CrushCue</span>
-                <span class="text-xs text-slate-400">Feelings Express & Quiz Web App</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">CrushCue App</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                Interactive web platform designed to express feelings and initiate honest conversations without awkward pressure, complete with single/relationship status quizzes.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Fun Web App</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Quiz Logic</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Netlify Live</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://crushcue.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs text-center shadow-lg shadow-rose-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('crushcue')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 9: Check My Love Score -->
-        <div class="project-card glass-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="personal">
-          <div class="p-6 space-y-4">
-            <div class="w-full h-44 rounded-2xl bg-gradient-to-tr from-fuchsia-950 to-slate-900 border border-slate-800 p-4 flex flex-col justify-between relative overflow-hidden">
-              <div class="flex justify-between items-start">
-                <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30 font-bold">Quiz Calculator</span>
-                <span class="text-xs font-mono text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Live</span>
-              </div>
-              <div>
-                <span class="text-2xl font-extrabold text-white block">Love Score App</span>
-                <span class="text-xs text-slate-400">Friendship & Relationship Calculator</span>
-              </div>
-            </div>
-
-            <div class="space-y-2">
-              <h3 class="text-xl font-bold text-white">Check My Love Score</h3>
-              <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                Gamified friendship & relationship score calculation web tool with interactive quiz logic evaluating how well your special person knows you.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-1.5 pt-2">
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Compatibility Quiz</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">JavaScript Logic</span>
-              <span class="px-2.5 py-1 rounded-md text-[10px] font-mono bg-slate-800 text-slate-300">Netlify Live</span>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 flex items-center gap-3">
-            <a href="https://eclectic-zabaione-e1da8e.netlify.app/" target="_blank" class="flex-1 py-2.5 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold text-xs text-center shadow-lg shadow-fuchsia-600/30 transition-all flex items-center justify-center gap-2">
-              <span>Open Website</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-            </a>
-            <button onclick="openModal('lovescore')" class="px-3 py-2.5 rounded-xl glass-panel text-slate-300 hover:text-white text-xs font-bold transition-all">
-              Details
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- WHY HIRE ME SECTION -->
-    <section id="why-me" class="glass-panel rounded-3xl p-8 sm:p-12 border-indigo-500/20 space-y-8">
-      <div class="text-center max-w-2xl mx-auto space-y-3">
-        <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Proven Client & Business Value</span>
-        <h2 class="text-3xl font-extrabold text-white">Why Work With Manish Yadav?</h2>
-        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          I bridge the gap between technical web engineering and real business growth. Here is why recruiters, IT companies, and local clients choose me:
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="glass-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto text-xl font-bold">
-            <i class="fa-solid fa-bolt"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">Fast Turnaround</h3>
-          <p class="text-xs text-slate-400">Rapid deployment to Netlify or Vercel with zero delays.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto text-xl font-bold">
-            <i class="fa-brands fa-whatsapp"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">WhatsApp Automations</h3>
-          <p class="text-xs text-slate-400">1-click bulk alerts, order triggers & instant messaging.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mx-auto text-xl font-bold">
-            <i class="fa-solid fa-database"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">Firebase Backends</h3>
-          <p class="text-xs text-slate-400">Persistent Firestore database & secure auth access.</p>
-        </div>
-
-        <div class="glass-card rounded-2xl p-6 text-center space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mx-auto text-xl font-bold">
-            <i class="fa-solid fa-mobile-screen-button"></i>
-          </div>
-          <h3 class="text-base font-bold text-white">100% Mobile Ready</h3>
-          <p class="text-xs text-slate-400">Flawless responsive layouts across mobile, tablet & desktop.</p>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/nextfilm" target="_blank" class="btn-github">GitHub</a>
         </div>
       </div>
-    </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="glass-panel rounded-3xl p-8 sm:p-12 border-indigo-500/20 space-y-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        
-        <div class="space-y-6">
-          <div class="space-y-2">
-            <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">Get In Touch</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Hire Me For Your Next Project or Job</h2>
-          </div>
-          
-          <p class="text-slate-300 text-sm leading-relaxed">
-            Ready to get your business website online or add a high-performing developer to your tech team? Contact me directly via WhatsApp or mobile.
-          </p>
-
-          <div class="space-y-4 pt-2">
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-base">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <span class="text-xs text-slate-400 font-mono uppercase block">Location</span>
-                <span class="text-sm font-bold text-white">Bettiah, West Champaran, Bihar, India</span>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-base">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div>
-                <span class="text-xs text-slate-400 font-mono uppercase block">Phone / Call</span>
-                <a href="tel:9155437755" class="text-sm font-bold text-white hover:text-cyan-400 transition-colors">+91 9155437755</a>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-base">
-                <i class="fa-brands fa-whatsapp"></i>
-              </div>
-              <div>
-                <span class="text-xs text-slate-400 font-mono uppercase block">WhatsApp</span>
-                <a href="https://wa.me/919155437755?text=Hi%20Manish,%20I%20want%20to%20discuss%20a%20project/job%20opportunity" target="_blank" class="text-sm font-bold text-emerald-400 hover:underline">Direct WhatsApp (9155437755)</a>
-              </div>
-            </div>
-          </div>
+      <!-- 4. RideNow -->
+      <div class="project-card">
+        <div>
+          <h3>RideNow</h3>
+          <p>Ride-hailing transport web platform clone modeled after modern mobility services.</p>
         </div>
-
-        <!-- Contact Form -->
-        <div class="glass-card rounded-2xl p-6 border-slate-800">
-          <form onsubmit="handleContactSubmit(event)" class="space-y-4">
-            <h3 class="text-lg font-bold text-white mb-2">Send Direct Message</h3>
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
-              <input type="text" required id="cName" placeholder="Enter your full name" class="w-full h-11 px-4 rounded-xl bg-slate-900/90 border border-slate-800 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Mobile / WhatsApp Number</label>
-              <input type="tel" required id="cPhone" placeholder="10 digit phone number" class="w-full h-11 px-4 rounded-xl bg-slate-900/90 border border-slate-800 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-300 mb-1">Project Details / Job Description</label>
-              <textarea id="cMessage" rows="3" required placeholder="Describe what website or app you want to build..." class="w-full p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"></textarea>
-            </div>
-            <button type="submit" class="w-full h-12 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-sm shadow-xl shadow-indigo-600/30 transition-all flex items-center justify-center gap-2">
-              <i class="fa-solid fa-paper-plane text-xs"></i> Send via WhatsApp
-            </button>
-          </form>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/ridenow" target="_blank" class="btn-github">GitHub</a>
         </div>
-
       </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="pt-8 border-t border-slate-800/80 text-center space-y-2">
-      <p class="text-sm text-slate-300 font-semibold">
-        Designed & Developed by <strong class="text-cyan-400">Manish Yadav</strong> | Bettiah, Bihar
-      </p>
-      <p class="text-xs text-slate-400 font-mono">
-        Contact: <a href="tel:9155437755" class="text-indigo-400 font-bold hover:underline">9155437755</a> • Built with HTML5, Tailwind CSS, JavaScript & Three.js 3D Engine
-      </p>
-    </footer>
-
-  </div>
-
-  <!-- PROJECT DETAILS MODAL POPUP -->
-  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop">
-    <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 sm:p-8 space-y-6 border-indigo-500/30 max-h-[90vh] overflow-y-auto relative">
-      <button onclick="closeModal()" class="absolute top-6 right-6 w-9 h-9 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center text-sm font-bold transition-all">
-        ✕
-      </button>
-
-      <div id="modal-content" class="space-y-4">
-        <!-- Dynamic Modal Data Injected Here -->
+      <!-- 5. Dilse Birthday -->
+      <div class="project-card">
+        <div>
+          <h3>Dilse Birthday</h3>
+          <p>Personalized Hinglish birthday greeting & celebration web app backed by Supabase.</p>
+        </div>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/dilse-birthday" target="_blank" class="btn-github">GitHub</a>
+        </div>
       </div>
+
+      <!-- 6. Crushceu -->
+      <div class="project-card">
+        <div>
+          <h3>Crushceu</h3>
+          <p>Interactive web application for customized message sharing and fun interaction.</p>
+        </div>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/crushceu" target="_blank" class="btn-github">GitHub</a>
+        </div>
+      </div>
+
+      <!-- 7. Love Score -->
+      <div class="project-card">
+        <div>
+          <h3>Love Score</h3>
+          <p>A fun love calculator and compatibility meter web application.</p>
+        </div>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/love-score" target="_blank" class="btn-github">GitHub</a>
+        </div>
+      </div>
+
+      <!-- 8. Quike Bite -->
+      <div class="project-card">
+        <div>
+          <h3>Quike Bite</h3>
+          <p>Fast food and quick ordering web interface built for high conversion.</p>
+        </div>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/quike-bite" target="_blank" class="btn-github">GitHub</a>
+        </div>
+      </div>
+
+      <!-- 9. FEA Attendance -->
+      <div class="project-card">
+        <div>
+          <h3>FEA Attendance</h3>
+          <p>Attendance tracking and management web application built for seamless record keeping.</p>
+        </div>
+        <div class="card-links">
+          <a href="NETLIFY_LINK_HERE" target="_blank" class="btn-live">Live Demo</a>
+          <a href="https://github.com/yadavmanishk364-web/fea-attendance" target="_blank" class="btn-github">GitHub</a>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- JAVASCRIPT & THREE.JS LOGIC -->
-  <script>
-    // Typing Effect Logic
-    const words = ["Full-Stack Web Developer", "Web Applications Architect", "SaaS & WhatsApp Automation Specialist"];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typingElement = document.getElementById("typing-text");
+  <footer>
+    <p>© 2026 Manish Web Technologies | Contact: yadavmanishk364@gmail.com</p>
+  </footer>
 
-    function typeEffect() {
-      const currentWord = words[wordIndex];
-      if (isDeleting) {
-        typingElement.textContent = currentWord.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typingElement.textContent = currentWord.substring(0, charIndex + 1);
-        charIndex++;
-      }
-
-      let speed = isDeleting ? 40 : 80;
-
-      if (!isDeleting && charIndex === currentWord.length) {
-        speed = 1800;
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        speed = 300;
-      }
-
-      setTimeout(typeEffect, speed);
-    }
-    document.addEventListener("DOMContentLoaded", typeEffect);
-
-    // Three.js 3D Cyber Particle Background Engine
-    (function init3D() {
-      const container = document.getElementById('canvas-container');
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.set(0, 4, 14);
-      camera.lookAt(0, 0, 0);
-
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      container.appendChild(renderer.domElement);
-
-      const particlesCount = 250;
-      const geometry = new THREE.BufferGeometry();
-      const positions = new Float32Array(particlesCount * 3);
-      const colors = new Float32Array(particlesCount * 3);
-
-      for(let i = 0; i < particlesCount * 3; i += 3) {
-        positions[i] = (Math.random() - 0.5) * 35;
-        positions[i + 1] = (Math.random() - 0.5) * 20;
-        positions[i + 2] = (Math.random() - 0.5) * 25;
-
-        colors[i] = 0.0;
-        colors[i + 1] = 0.94;
-        colors[i + 2] = 0.99;
-      }
-
-      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-      const material = new THREE.PointsMaterial({
-        size: 0.16,
-        vertexColors: true,
-        transparent: true,
-        opacity: 0.65
-      });
-
-      const particleSystem = new THREE.Points(geometry, material);
-      scene.add(particleSystem);
-
-      let mouseX = 0, mouseY = 0;
-      window.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-      });
-
-      function animate() {
-        requestAnimationFrame(animate);
-        particleSystem.rotation.y += 0.0012;
-        particleSystem.rotation.x += 0.0006;
-
-        camera.position.x += (mouseX * 1.8 - camera.position.x) * 0.04;
-        camera.position.y += (-mouseY * 1.8 + 4 - camera.position.y) * 0.04;
-        camera.lookAt(0, 0, 0);
-
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    })();
-
-    // Category Filter Logic
-    function filterProjects(category) {
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => {
-        btn.classList.remove('bg-indigo-600', 'text-white');
-        btn.classList.add('text-slate-300');
-      });
-      event.target.classList.add('bg-indigo-600', 'text-white');
-
-      const cards = document.querySelectorAll('.project-card');
-      cards.forEach(card => {
-        if(category === 'all' || card.getAttribute('data-category').includes(category)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    // Detailed Project Modal Data
-    const projectDetails = {
-      ridenow: {
-        title: "RideNow Transport Platform Clone",
-        badge: "Ride-Hailing & Cab Platform",
-        desc: "Ola, Uber, and Rapido styled cab & bike ride-hailing interface clone. Features vehicle type selection (Bike, Auto, Sedan, XL), live pickup & drop estimation, fare matrix calculation, and interactive driver dispatch UI.",
-        tech: ["JavaScript ES6+", "HTML5 Canvas", "CSS3 Grid", "Responsive UI", "Netlify Live"],
-        link: "https://ridenowonroad.netlify.app/"
-      },
-      fea: {
-        title: "FEA Attendance Tracking System",
-        badge: "Production Cloud App",
-        desc: "Production-grade cloud portal with Master Admin vs Teacher role access, Firebase Auth & Firestore DB, dual-phone student data (Student + Parent), and 1-click bulk WhatsApp absentees messaging.",
-        tech: ["Firebase Auth", "Firestore Cloud DB", "WhatsApp API", "Vanilla JS", "Netlify Live"],
-        link: "https://fea-attendance-portal.netlify.app/"
-      },
-      rooftop: {
-        title: "The Rooftop Restaurant",
-        badge: "Commercial Client Web App",
-        desc: "Commercial web portal built for local restaurant client in Bettiah, Bihar. Features dynamic digital menu, pricing, table reservation interface, and mobile ordering triggers.",
-        tech: ["Commercial UX", "Digital Menu UI", "HTML5/CSS3", "Netlify Live"],
-        link: "https://therooftoprestaurant.netlify.app/"
-      },
-      shopkart: {
-        title: "ShopKart Platform",
-        badge: "E-Commerce Digital Storefront",
-        desc: "Complete online shopping storefront solution built to help local businesses and sellers take their product catalogs online with full shopping cart UX.",
-        tech: ["E-Commerce Cart", "Product Catalog", "JavaScript Logic", "Netlify Live"],
-        link: "https://shopkartwebsite.netlify.app/"
-      },
-      quickbite: {
-        title: "Quick Bite Web Portal",
-        badge: "Fast Food Ordering App",
-        desc: "Responsive web design engineered for fast food centers, quick dining spots, and local delivery services with quick-order categories and menu showcases.",
-        tech: ["Food Ordering UI", "Responsive CSS", "Netlify Live"],
-        link: "https://quickbitewebsite.netlify.app/"
-      },
-      nextfilm: {
-        title: "Next Film Online",
-        badge: "Media & Streaming UI",
-        desc: "Real-time movie database & streaming portal interface integrating movie metadata and poster matching without generic placeholders.",
-        tech: ["Movie API", "Media Streaming Layout", "Async/Await", "Netlify Live"],
-        link: "https://nextfilmonline.netlify.app/"
-      },
-      birthday: {
-        title: "Dil Se Birthday / Birthday Wishes",
-        badge: "Personal Greeting App",
-        desc: "Interactive birthday greeting website where users can send heartfelt messages with dynamic visual animations and personalized greetings.",
-        tech: ["HTML5 Canvas", "CSS Animations", "Audio JS", "Netlify Live"],
-        link: "https://dilsebirthday.netlify.app/"
-      },
-      crushcue: {
-        title: "CrushCue App",
-        badge: "Interactive Fun App",
-        desc: "Interactive platform designed to express feelings and initiate honest conversations without pressure, featuring engaging single/relationship quizzes.",
-        tech: ["Interactive Quiz", "JavaScript Logic", "Tailwind CSS", "Netlify Live"],
-        link: "https://crushcue.netlify.app/"
-      },
-      lovescore: {
-        title: "Check My Love Score",
-        badge: "Gamified Quiz Tool",
-        desc: "Gamified friendship & relationship score calculation web tool with interactive quiz logic evaluating how well your special person knows you.",
-        tech: ["Quiz Engine", "JavaScript Logic", "Netlify Live"],
-        link: "https://eclectic-zabaione-e1da8e.netlify.app/"
-      }
-    };
-
-    function openModal(key) {
-      const item = projectDetails[key];
-      if(!item) return;
-
-      const content = document.getElementById('modal-content');
-      content.innerHTML = `
-        <span class="px-3 py-1 rounded-full text-xs font-mono bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-500/30">${item.badge}</span>
-        <h3 class="text-2xl font-extrabold text-white pt-1">${item.title}</h3>
-        <p class="text-sm text-slate-300 leading-relaxed">${item.desc}</p>
-        <div>
-          <h4 class="text-xs font-mono font-bold text-slate-400 uppercase mb-2">Technologies & Architecture:</h4>
-          <div class="flex flex-wrap gap-2">
-            ${item.tech.map(t => `<span class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-300">${t}</span>`).join('')}
-          </div>
-        </div>
-        <div class="pt-4">
-          <a href="${item.link}" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-bold text-xs shadow-lg shadow-indigo-600/30 hover:scale-105 transition-all">
-            <span>Open Live App</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-        </div>
-      `;
-
-      document.getElementById('project-modal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('project-modal').classList.add('hidden');
-    }
-
-    document.getElementById('project-modal').addEventListener('click', function(e) {
-      if(e.target === this) closeModal();
-    });
-
-    // Contact Form Handler
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('cName').value;
-      const phone = document.getElementById('cPhone').value;
-      const msg = document.getElementById('cMessage').value;
-
-      const waText = encodeURIComponent(`Hello Manish Yadav,\n\nMy name is ${name} (${phone}).\n\nProject/Job Requirement:\n${msg}`);
-      window.open(`https://wa.me/919155437755?text=${waText}`, '_blank');
-    }
-  </script>
 </body>
 </html>
